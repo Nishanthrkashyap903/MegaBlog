@@ -26,7 +26,7 @@ export default function PostForm({ post }) {
             if (file) {
                 appwriteService.deleteFile(post.featureImageID);
             }
-           
+            
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
                 featureImageID: file ? file.$id : undefined,
