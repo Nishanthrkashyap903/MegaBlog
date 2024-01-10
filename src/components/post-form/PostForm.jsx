@@ -20,6 +20,7 @@ export default function PostForm({ post }) {
     
     const submit = async (data) => {
         console.log(`post ${post} data ${data}`);
+        //Edit the Post 
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
             console.log("file ",file);
@@ -35,7 +36,7 @@ export default function PostForm({ post }) {
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
-        } else {
+        } else {  //Create a new post
             const file = await appwriteService.uploadFile(data.image[0]);
             console.log(`Data in create ${data}`);
             console.log("file ",file);
